@@ -1,13 +1,12 @@
-# Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="sorin"
-DISABLE_AUTO_UPDATE="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git ruby rails osx)
 
 source $ZSH/oh-my-zsh.sh
+source ~/.functions
+source ~/.aliases
+source ~/.private
 
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
@@ -40,10 +39,5 @@ export PATH=/usr/local/pgsql/bin:$PATH
 export PATH=/Users/coleman/Dropbox/dev/osmosis/package/bin:$PATH
 
 # Expand zsh history
-HISTSIZE=500000
-SAVEHIST=500000
-
-source ~/.functions
-source ~/.aliases
-
-source ~/.private
+HISTSIZE=50000000
+SAVEHIST=50000000

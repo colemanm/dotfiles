@@ -13,15 +13,6 @@ function mkexec() {
 function remove-ext() {
   echo "$1" | sed "s/\([^.*]\)\.\(.*\)*$/\1/g"
 }
-function unlocal {
-	username=`whoami`
-	export PATH=`echo $PATH | sed -e "s/\/Users\/\$username\/local\/bin://"`
-}
-function addlocal {
-	unlocal
-	username=`whoami`
-	export PATH="/Users/$username/local/bin:$PATH"
-}
 function psa() {
 	ps aux | grep $1
 }
@@ -114,7 +105,7 @@ function quickmdbimport() {
 	~/local/bin/ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=$1" $1.mdb -lco GEOMETRY_NAME=geometry -skipfailures
 }
 
-# importing -- command dbname filename	
+# importing -- command dbname filename
 function imposm2pgsql() {
 	osm2pgsql -v -U postgres -s -S /usr/local/share/default.style -d $1 $2
 }

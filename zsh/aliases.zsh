@@ -1,20 +1,33 @@
-# shell tools
+# Shell / Environment
 alias zz='subl ~/.zshrc'
 alias aa='subl ~/.aliases'
 alias ff='subl ~/.functions'
-alias zp='$EDITOR ~/.zshrc'
 alias src='source ~/.zshrc'
 alias cx='chmod +x'
 alias e='subl .'
+alias ee='subl'
+alias lf="ls -l | egrep -v '^d'"
+alias ldir="ls -l | egrep '^d'"
 
-# shortcuts
+# Vagrant
+alias vu="vagrant up"
+alias vh="vagrant halt"
+alias vr="vagrant reload"
+alias vd="vagrant destroy"
+
+# SSH
+alias sshconf='ee ~/.ssh/config'
+source ~/.servers
+
+# Shortcuts
 alias la='ls -lA'
 alias lh='ls -lAh'
 alias o='open'
 alias s='subl'
 alias j='jekyll'
+alias js='jekyll serve --watch'
 
-# networking
+# Networking
 alias flush='sudo killall -HUP mDNSResponder'
 alias ip='curl icanhazip.com'
 alias fdns='dscacheutil -flushcache'
@@ -31,26 +44,27 @@ alias gpd='git push origin dev'
 alias gpm='git push origin master'
 alias gpg='git push origin gh-pages'
 
-# rails
+# Rails
 alias bi='bundle install'
 alias rs='bundle exec rails s'
 alias fs='bundle exec foreman start'
 alias rc='bundle exec rails c'
 
-# processes
+# Processes
 alias mgd='mongod --dbpath ~/Documents/mongo_data'
 alias sqld='mysql.server start'
 
-# dev
+# Dev
 alias xcode='open *.xcodeproj'
 alias b='brew'
 
-# env
+# Env
 alias mate='nocorrect mate'
 alias wget='nocorrect wget'
 alias nmap='nocorrect nmap'
+alias vpce='nocorrect vpce'
 alias excel='/Applications/Microsoft\ Office\ 2011/Microsoft\ Excel.app/Contents/MacOS/Microsoft\ Excel'
 
-# geo
+# Geo
 alias o2o='ogr2ogr'
 alias oinfo='ogrinfo -so -al'
