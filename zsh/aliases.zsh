@@ -14,6 +14,7 @@ alias vu="vagrant up"
 alias vh="vagrant halt"
 alias vr="vagrant reload"
 alias vd="vagrant destroy"
+alias vs="vagrant ssh"
 
 # SSH
 alias sshconf='ee ~/.ssh/config'

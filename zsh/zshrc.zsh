@@ -41,3 +41,8 @@ export PATH=/Users/coleman/Dropbox/dev/osmosis/package/bin:$PATH
 # Expand zsh history
 HISTSIZE=50000000
 SAVEHIST=50000000
+
+export OGR_S57_OPTIONS="SPLIT_MULTIPOINT=ON,ADD_SOUNDG_DEPTH=ON,LNAM_REFS=ON"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
