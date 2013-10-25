@@ -59,11 +59,6 @@ alias sqld='mysql.server start'
 alias xcode='open *.xcodeproj'
 alias b='brew'
 
-# Env
-alias mate='nocorrect mate'
-alias wget='nocorrect wget'
-alias nmap='nocorrect nmap'
-alias vpce='nocorrect vpce'
 alias excel='/Applications/Microsoft\ Office\ 2011/Microsoft\ Excel.app/Contents/MacOS/Microsoft\ Excel'
 
 # Geo
