@@ -27,6 +27,7 @@ alias o='open'
 alias s='subl'
 alias j='jekyll'
 alias js='jekyll serve --watch'
+alias bw='open -a Byword.app'
 
 # Networking
 alias flush='sudo killall -HUP mDNSResponder'
