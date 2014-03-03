@@ -1,70 +1,74 @@
 # Server functions
 function pgstart() {
-	pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+  pg_ctl -D /usr/local/var/postgres93 -l /usr/local/var/postgres/server.log start
 }
 function pgstop() {
-	pg_ctl -D /usr/local/var/postgres stop
+  pg_ctl -D /usr/local/var/postgres93 stop
 }
 
 # Shell
 function mkexec() {
-	chmod +x $1
+  chmod +x $1
 }
 function remove-ext() {
   echo "$1" | sed "s/\([^.*]\)\.\(.*\)*$/\1/g"
 }
 function psa() {
-	ps aux | grep $1
+  ps aux | grep $1
+}
+
+function geminfo() {
+  gem query -r -d -n \^$1$
 }
 
 # Git
 function gpo() {
-	git push origin $1
+  git push origin $1
 }
 function gco() {
-	git checkout $1
+  git checkout $1
 }
 
 # sshfs
 # Remote Mount (sshfs)
 # creates mount folder and mounts the remote filesystem
 rmount() {
-	local host folder mname
-	host="${1%%:*}:"
-	[[ ${1%:} == ${host%%:*} ]] && folder='' || folder=${1##*:}
-	if [[ -n $2 ]]; then
-		mname=$2
-	else
-		mname=${folder##*/}
-		[[ "$mname" == "" ]] && mname=${host%%:*}
-	fi
-	if [[ $(grep -i "host ${host%%:*}" ~/.ssh/config) != '' ]]; then
-		mkdir -p ~/mounts/$mname > /dev/null
-		sshfs $host$folder ~/mounts/$mname -oauto_cache,reconnect,defer_permissions,negative_vncache,volname=$mname,noappledouble && echo "mounted ~/mounts/$mname"
-	else
-		echo "No entry found for ${host%%:*}"
-		return 1
-	fi
+  local host folder mname
+  host="${1%%:*}:"
+  [[ ${1%:} == ${host%%:*} ]] && folder='' || folder=${1##*:}
+  if [[ -n $2 ]]; then
+    mname=$2
+  else
+    mname=${folder##*/}
+    [[ "$mname" == "" ]] && mname=${host%%:*}
+  fi
+  if [[ $(grep -i "host ${host%%:*}" ~/.ssh/config) != '' ]]; then
+    mkdir -p ~/mounts/$mname > /dev/null
+    sshfs $host$folder ~/mounts/$mname -oauto_cache,reconnect,defer_permissions,negative_vncache,volname=$mname,noappledouble && echo "mounted ~/mounts/$mname"
+  else
+    echo "No entry found for ${host%%:*}"
+    return 1
+  fi
 }
 
 # Remote Umount, unmounts and deletes local folder (experimental, watch you step)
 rumount() {
-	if [[ $1 == "-a" ]]; then
-		ls -1 ~/mounts/|while read dir
-		do
-			[[ -d $(mount|grep "mounts/$dir") ]] && umount ~/mounts/$dir
-			[[ -d $(ls ~/mounts/$dir) ]] || rm -rf ~/mounts/$dir
-		done
-	else
-		[[ -d $(mount|grep "mounts/$1") ]] && umount ~/mounts/$1
-		[[ -d $(ls ~/mounts/$1) ]] || rm -rf ~/mounts/$1
-	fi
+  if [[ $1 == "-a" ]]; then
+    ls -1 ~/mounts/|while read dir
+    do
+      [[ -d $(mount|grep "mounts/$dir") ]] && umount ~/mounts/$dir
+      [[ -d $(ls ~/mounts/$dir) ]] || rm -rf ~/mounts/$dir
+    done
+  else
+    [[ -d $(mount|grep "mounts/$1") ]] && umount ~/mounts/$1
+    [[ -d $(ls ~/mounts/$1) ]] || rm -rf ~/mounts/$1
+  fi
 }
 
 
 # Git
 function gcom() {
-	git commit -m $1
+  git commit -m $1
 }
 
 function search() {
@@ -72,49 +76,49 @@ function search() {
 }
 
 function his() {
-	history | grep $1
+  history | grep $1
 }
 
 function lg() {
-	ls -lah | grep $1
+  ls -lah | grep $1
 }
 
 function unlocal {
-	username=`whoami`
-	export PATH=`echo $PATH | sed -e "s/\/Users\/\$username\/local\/bin://"`
+  username=`whoami`
+  export PATH=`echo $PATH | sed -e "s/\/Users\/\$username\/local\/bin://"`
 }
 
 function addlocal {
-	unlocal
-	username=`whoami`
-	export PATH="/Users/$username/local/bin:$PATH"
+  unlocal
+  username=`whoami`
+  export PATH="/Users/$username/local/bin:$PATH"
 }
 
 # GIS stuff
 function cgdb() {
-	createdb -T template_postgis $1
-	echo "Database $1 created."
+  createdb $1
+  echo "CREATE EXTENSION postgis" | psql -d $1
+  echo "Database $1 created."
 }
 
 function reprojshp() {
-	ogr2ogr --config SHAPE_ENCODING UTF-8 -f "ESRI Shapefile" -t_srs EPSG:$1 -s_srs EPSG:$2 $4 $3
+  ogr2ogr --config SHAPE_ENCODING UTF-8 -f "ESRI Shapefile" -t_srs EPSG:$1 -s_srs EPSG:$2 $4 $3
 }
 
 function quickmdbimport() {
-	creategisdb $1
-	~/local/bin/ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=$1" $1.mdb -lco GEOMETRY_NAME=geometry -skipfailures
+  creategisdb $1
+  ~/local/bin/ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=$1" $1.mdb -lco GEOMETRY_NAME=geometry -skipfailures
 }
 
 # importing -- command dbname filename
 function imposm2pgsql() {
-	osm2pgsql -v -U postgres -s -S /usr/local/share/default.style -d $1 $2
+  osm2pgsql -v -U postgres -s -S /usr/local/share/default.style -d $1 $2
 }
 
 function imposmimportdb() {
   creategisdb $2
   imposm --read --write --optimize --overwrite-cache -d $2 $1
   imposm -d $2 --deploy-production-tables
-  growlnotify -t "Imposm import" -m "Imposm import finished."
 }
 
 # Import OSM data in imposm format

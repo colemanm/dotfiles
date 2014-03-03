@@ -2,6 +2,8 @@
 alias zz='subl ~/.zshrc'
 alias aa='subl ~/.aliases'
 alias ff='subl ~/.functions'
+alias hh='history'
+alias h='history | tail -40'
 alias src='source ~/.zshrc'
 alias cx='chmod +x'
 alias e='subl .'
@@ -25,8 +27,8 @@ alias la='ls -lA'
 alias lh='ls -lAh'
 alias o='open'
 alias s='subl'
-alias j='jekyll'
-alias js='jekyll serve --watch'
+alias j='jekyll serve --watch'
+alias jd='jekyll serve --watch --drafts'
 alias bw='open -a Byword.app'
 
 # Networking
@@ -44,7 +46,10 @@ alias ga='git add --all'
 alias gr='git remote show origin'
 alias gpd='git push origin dev'
 alias gpm='git push origin master'
-alias gpg='git push origin gh-pages'
+alias gdiff='git diff'
+alias gdiffc='git diff --cached'
+alias gditch='git reset --hard'
+alias gditchall='git reset --hard && git clean -fd'
 
 # Rails
 alias bi='bundle install'
@@ -55,6 +60,7 @@ alias rc='bundle exec rails c'
 # Processes
 alias mgd='mongod --dbpath ~/Documents/mongo_data'
 alias sqld='mysql.server start'
+alias sqlstop='mysql.server stop'
 
 # Dev
 alias xcode='open *.xcodeproj'
