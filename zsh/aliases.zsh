@@ -1,15 +1,18 @@
 # Shell / Environment
-alias zz='subl ~/.zshrc'
-alias aa='subl ~/.aliases'
-alias ff='subl ~/.functions'
-alias hh='history'
-alias h='history | tail -40'
+alias zz='code ~/.zshrc'
+alias aa='code ~/.aliases'
+alias ff='code ~/.functions'
+alias hg='history | grep'
+alias hh='history | tail -40'
+alias ha='history | grep -C 3'
 alias src='source ~/.zshrc'
 alias cx='chmod +x'
-alias e='subl .'
-alias ee='subl'
+alias e='atom .'
+alias c='code .'
+alias ee='atom'
 alias lf="ls -l | egrep -v '^d'"
 alias ldir="ls -l | egrep '^d'"
+alias nr="repl.history"
 
 # Vagrant
 alias vu="vagrant up"
@@ -27,9 +30,13 @@ alias la='ls -lA'
 alias lh='ls -lAh'
 alias o='open'
 alias s='subl'
-alias j='jekyll serve --watch'
-alias jd='jekyll serve --watch --drafts'
+alias jr='make clean && bundle exec jekyll serve --watch --config _config_dev.yml --incremental --future'
+alias jrf='make clean && make resetmeta && bundle exec jekyll serve --watch --config _config_dev.yml --incremental --future'
+alias j='bundle exec jekyll'
 alias bw='open -a Byword.app'
+alias bebp='bundle exec ./blog.rb post'
+alias bebl='bundle exec ./blog.rb link'
+alias bebb='bundle exec ./blog.rb book'
 
 # Networking
 alias flush='sudo killall -HUP mDNSResponder'
@@ -43,6 +50,7 @@ alias gs='git status'
 alias gc='git clone'
 alias gb='git branch -a'
 alias ga='git add --all'
+alias gdd='git branch -d'
 alias gr='git remote show origin'
 alias gpd='git push origin dev'
 alias gpm='git push origin master'
@@ -50,6 +58,7 @@ alias gdiff='git diff'
 alias gdiffc='git diff --cached'
 alias gditch='git reset --hard'
 alias gditchall='git reset --hard && git clean -fd'
+alias ggl='git log'
 
 # Rails
 alias bi='bundle install'
@@ -71,3 +80,7 @@ alias excel='/Applications/Microsoft\ Office\ 2011/Microsoft\ Excel.app/Contents
 # Geo
 alias o2o='ogr2ogr'
 alias oinfo='ogrinfo -so -al'
+
+# Inkscape
+alias inkscape='/Users/coleman/Applications/Inkscape.app/Contents/Resources/bin/inkscape'
+alias inkscape-bin='/Users/coleman/Applications/Inkscape.app/Contents/Resources/bin/inkscape-bin'
