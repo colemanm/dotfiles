@@ -92,17 +92,6 @@ function lg() {
   ls -lah | grep $1
 }
 
-function unlocal {
-  username=`whoami`
-  export PATH=`echo $PATH | sed -e "s/\/Users\/\$username\/local\/bin://"`
-}
-
-function addlocal {
-  unlocal
-  username=`whoami`
-  export PATH="/Users/$username/local/bin:$PATH"
-}
-
 # Images
 function tiny {
   tinypng $1 -r -k pSSDFdzgDt6djsGpp769wzdQ8jdzYspc

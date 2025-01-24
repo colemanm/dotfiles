@@ -6,8 +6,6 @@ plugins=(git ruby rails macos history)
 source $ZSH/oh-my-zsh.sh
 source ~/.functions
 source ~/.aliases
-source ~/.private
-source ~/.fulcrum-desktop
 
 export LD_LIBRARY_PATH=/usr/local/lib
 export GDAL_DRIVER_PATH=/usr/local/lib/gdalplugins

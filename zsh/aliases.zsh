@@ -23,7 +23,6 @@ alias vs="vagrant ssh"
 
 # SSH
 alias sshconf='ee ~/.ssh/config'
-source ~/.servers
 
 # Shortcuts
 alias la='ls -lA'
