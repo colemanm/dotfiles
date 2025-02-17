@@ -1,9 +1,9 @@
 # Server functions
 function pgstart() {
-  pg_ctl -D /usr/local/var/postgres93 -l /usr/local/var/postgres/server.log start
+  pg_ctl -D /opt/homebrew/var/postgres -l /opt/homebrew/var/postgres/server.log start
 }
 function pgstop() {
-  pg_ctl -D /usr/local/var/postgres93 stop
+  pg_ctl -D /opt/homebrew/var/postgres stop
 }
 
 # Shell
@@ -27,6 +27,15 @@ function gpo() {
 }
 function gco() {
   git checkout $1
+}
+function gpfind () {
+  git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %C(cyan)(%cr) %C(blue)<%an>%Creset" --abbrev-commit --date=relative --patch -S"$1"
+}
+function gitmerged() {
+  git branch --merged=master | grep -v master
+}
+function gitclean() {
+  git branch -d $(git branch --merged=master | grep -v master)
 }
 
 # sshfs
@@ -83,15 +92,9 @@ function lg() {
   ls -lah | grep $1
 }
 
-function unlocal {
-  username=`whoami`
-  export PATH=`echo $PATH | sed -e "s/\/Users\/\$username\/local\/bin://"`
-}
-
-function addlocal {
-  unlocal
-  username=`whoami`
-  export PATH="/Users/$username/local/bin:$PATH"
+# Images
+function tiny {
+  tinypng $1 -r -k pSSDFdzgDt6djsGpp769wzdQ8jdzYspc
 }
 
 # GIS stuff

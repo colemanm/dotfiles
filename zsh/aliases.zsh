@@ -10,10 +10,10 @@ alias e='c .'
 alias ee='c'
 alias lf="ls -l | egrep -v '^d'"
 alias ldir="ls -l | egrep '^d'"
+alias nr="repl.history"
 
 # SSH
 alias sshconf='ee ~/.ssh/config'
-source ~/.servers
 
 # Shortcuts
 alias la='ls -lA'
@@ -41,6 +41,7 @@ alias gs='git status'
 alias gc='git clone'
 alias gb='git branch -a'
 alias ga='git add --all'
+alias gdd='git branch -d'
 alias gr='git remote show origin'
 alias gpd='git push origin dev'
 alias gpm='git push origin master'
@@ -48,6 +49,7 @@ alias gdiff='git diff'
 alias gdiffc='git diff --cached'
 alias gditch='git reset --hard'
 alias gditchall='git reset --hard && git clean -fd'
+alias ggl='git log'
 
 # Rails
 alias bi='bundle install'
@@ -69,3 +71,7 @@ alias excel='/Applications/Microsoft\ Office\ 2011/Microsoft\ Excel.app/Contents
 # Geo
 alias o2o='ogr2ogr'
 alias oinfo='ogrinfo -so -al'
+
+# Inkscape
+alias inkscape='/Users/coleman/Applications/Inkscape.app/Contents/Resources/bin/inkscape'
+alias inkscape-bin='/Users/coleman/Applications/Inkscape.app/Contents/Resources/bin/inkscape-bin'
