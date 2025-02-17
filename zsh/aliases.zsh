@@ -1,22 +1,15 @@
 # Shell / Environment
-alias zz='subl ~/.zshrc'
-alias aa='subl ~/.aliases'
-alias ff='subl ~/.functions'
+alias zz='c ~/.zshrc'
+alias aa='c ~/.aliases'
+alias ff='c ~/.functions'
 alias hh='history'
 alias h='history | tail -40'
 alias src='source ~/.zshrc'
 alias cx='chmod +x'
-alias e='subl .'
-alias ee='subl'
+alias e='c .'
+alias ee='c'
 alias lf="ls -l | egrep -v '^d'"
 alias ldir="ls -l | egrep '^d'"
-
-# Vagrant
-alias vu="vagrant up"
-alias vh="vagrant halt"
-alias vr="vagrant reload"
-alias vd="vagrant destroy"
-alias vs="vagrant ssh"
 
 # SSH
 alias sshconf='ee ~/.ssh/config'
@@ -29,7 +22,12 @@ alias o='open'
 alias s='subl'
 alias j='jekyll serve --watch'
 alias jd='jekyll serve --watch --drafts'
-alias bw='open -a Byword.app'
+alias jr='make clean && bundle exec jekyll serve --watch --config _config_dev.yml --incremental --future'
+alias jrf='make clean && make resetmeta && bundle exec jekyll serve --watch --config _config_dev.yml --incremental --future'
+alias j='bundle exec jekyll'
+alias bebp='bundle exec ./blog.rb post'
+alias bebl='bundle exec ./blog.rb link'
+alias bebb='bundle exec ./blog.rb book'
 
 # Networking
 alias flush='sudo killall -HUP mDNSResponder'
