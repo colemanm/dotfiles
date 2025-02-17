@@ -6,7 +6,6 @@ plugins=(git ruby rails macos history)
 source $ZSH/oh-my-zsh.sh
 source ~/.functions
 source ~/.aliases
-source ~/.private
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/opt/homebrew/lib/ruby/gems/3.1.0/bin:$PATH"
