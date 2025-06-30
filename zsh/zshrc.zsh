@@ -37,9 +37,5 @@ export OGR_S57_OPTIONS="SPLIT_MULTIPOINT=ON,ADD_SOUNDG_DEPTH=ON,LNAM_REFS=ON"
 # disable autocorrect
 unsetopt correct_all
 
-# added by travis gem
-[ -f /Users/coleman/.travis/travis.sh ] && source /Users/coleman/.travis/travis.sh
-export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
-
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/coleman/.cache/lm-studio/bin"
