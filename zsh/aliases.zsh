@@ -35,7 +35,6 @@ alias ip='curl icanhazip.com'
 alias fdns='dscacheutil -flushcache'
 
 # git
-alias git='hub'
 alias gp='git pull'
 alias gs='git status'
 alias gc='git clone'

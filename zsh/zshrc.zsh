@@ -1,15 +1,11 @@
 ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="sorin"
 
-plugins=(git ruby rails macos history)
+plugins=(history)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.functions
 source ~/.aliases
-
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/opt/homebrew/lib/ruby/gems/3.1.0/bin:$PATH"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 # Homebrew
 export HOMEBREW_PREFIX="/opt/homebrew";
@@ -39,3 +35,8 @@ unsetopt correct_all
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/coleman/.cache/lm-studio/bin"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/coleman/.lmstudio/bin"
+# End of LM Studio CLI section
+
