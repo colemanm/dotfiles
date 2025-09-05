@@ -40,3 +40,5 @@ export PATH="$PATH:/Users/coleman/.cache/lm-studio/bin"
 export PATH="$PATH:/Users/coleman/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+. "$HOME/.local/bin/env"
